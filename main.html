@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ArseinRubika یک اپلیکیشن جامع برای یادگیری برنامه‌نویسی و استفاده از Sketchware است.">
+    <meta name="keywords" content="ArseinRubika, برنامه‌نویسی, Sketchware, آموزش برنامه‌نویسی, اپلیکیشن اندروید">
+    <meta name="author" content="Your Name">
+    <title>ArseinRubika</title>
+    <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('fonts/IRANSans.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'IRANSans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            direction: rtl;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background: #fff;
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 900px;
+            width: 90%;
+            box-sizing: border-box;
+            margin-top: 20px;
+            box-shadow: none;
+        }
+        .logo img {
+            max-width: 180px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.1);
+        }
+        h1 {
+            font-size: 3.5em;
+            margin: 0;
+            color: #004d40;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        ul {
+            text-align: left;
+            direction: rtl;
+            margin: 0 auto 20px;
+            padding: 0;
+            list-style: none;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        ul li {
+            background: #f1f8e9;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        }
+        ul li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        ul li strong {
+            color: #004d40;
+        }
+        .btn {
+            background: #004d40;
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            margin: 10px 15px;
+        }
+        .btn:hover {
+            background: #00695c;
+            transform: scale(1.1);
+        }
+        .btn-primary {
+            background: #00acc1;
+        }
+        .btn-primary:hover {
+            background: #00838f;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: 40px 0;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slides img {
+            width: 100%;
+            flex-shrink: 0;
+            display: none;
+        }
+        .slides img.active {
+            display: block;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 22px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.6);
+            transform: translateY(-50%);
+        }
+        .next {
+            right: 10px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .video-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            .logo img {
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="logo">
+            <img src="https://uploadkon.ir/uploads/1c1709_24bot.png" alt="App Logo">
+        </div>
+        <h1>ArseinRubika</h1>
+        <p>آیا به دنبال یک منبع کامل برای یادگیری برنامه‌نویسی و استفاده از Sketchware هستید؟ اپلیکیشن ما دقیقاً همان چیزی است که نیاز دارید! با دو بخش مجزا، این اپلیکیشن به شما کمک می‌کند تا مهارت‌های برنامه‌نویسی خود را ارتقا دهید و از ابزارهای قدرتمند Sketchware بهره‌مند شوید.</p>
+        
+        <p><strong>ویژگی‌ها:</strong></p>
+        <ul>
+            <li><strong>هزاران ویدئوی آموزشی:</strong> دسترسی به مجموعه‌ای گسترده از ویدئوهای آموزشی برای یادگیری برنامه‌نویسی و Sketchware.</li>
+            <li><strong>ابزارهای متنوع Sketchware:</strong> استفاده از ابزارهای پیشرفته برای طراحی و توسعه اپلیکیشن‌های خود.</li>
+            <li><strong>رابط کاربری ساده و کاربرپسند:</strong> تجربه‌ای آسان و لذت‌بخش در استفاده از اپلیکیشن.</li>
+            <li><strong>به‌روزرسانی‌های منظم:</strong> دریافت آخرین آموزش‌ها و ابزارها برای بهبود مهارت‌های شما.</li>
+        </ul>
+
+        <div class="video-container">
+            <iframe src="https://www.aparat.com/video/video/embed/videohash/lnev4j2/vt/frame" allowfullscreen="true"></iframe>
+        </div>
+
+        <p><strong>چرا منتظرید؟ همین حالا اپلیکیشن ما را دانلود کنید و به جمع برنامه‌نویسان حرفه‌ای بپیوندید!</strong></p>
+        <a class="btn btn-primary" href="https://myket.ir/app/ir.arseinrubika.app" target="_blank">دانلود از مایکت</a>
+        <a class="btn" href="https://rubika.ir/ArseinApplicationSupport" target="_blank">ارتباط با ما</a>
+
+        <div class="slider">
+            <div class="slides">
+                <img src="https://imgurl.ir/uploads/m872615_1731125350725_100.png" alt="Slide 1" class="active">
+                <img src="https://imgurl.ir/uploads/a74420_1731125361274_100.png" alt="Slide 2">
+                <img src="https://imgurl.ir/uploads/f435260_1731125371016_100.png" alt="Slide 3">
+                <img src="https://imgurl.ir/uploads/w84806_1731125378750_100.png" alt="Slide 4">
+                <img src="https://imgurl.ir/uploads/g83663_1731125478604_100.png" alt="Slide 5">
+                <img src="https://imgurl.ir/uploads/g637219_1731125503072_100.png" alt="Slide 6">
+                <img src="https://imgurl.ir/uploads/b38017_1731125722466_100.png" alt="Slide 7">
+                <img src="https://imgurl.ir/uploads/h128296_1731125824470_100.png" alt="Slide 8">
+                <img src="https://imgurl.ir/uploads/k322410_1731125782590_100.png" alt="Slide 9">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.querySelectorAll('.slides img');
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[slideIndex].classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setInterval(function() {
+                plusSlides(1);
+            }, 3000);
+        });
+    </script>
+</body>
+  </html>
